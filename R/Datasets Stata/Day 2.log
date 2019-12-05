@@ -1,0 +1,90 @@
+--------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Day 2.log
+  log type:  text
+ opened on:  26 Nov 2019, 10:14:16
+
+. do "D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Recap_day_1 dd 201
+> 9-11-26.do"
+
+. /* 
+> 
+>    Dataset for  Health dataset and Risk factors
+>    Extending the STATA : check youtube videos and 
+> 
+> */
+. 
+. sysuse auto.dta
+(1978 Automobile Data)
+
+. sysuse auto.dta
+(1978 Automobile Data)
+
+. count
+  74
+
+. clear
+
+. cls
+
+. use "D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Firstwave.dta"
+
+. count
+  22
+
+. tab foreign
+variable foreign not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. tab gender
+
+     gender |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          f |         11       50.00       50.00
+          m |         11       50.00      100.00
+------------+-----------------------------------
+      Total |         22      100.00
+
+. summ bmi
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+         bmi |         22    29.12273    16.64763          1         89
+
+. tab smoke
+
+      smoke |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |         15       68.18       68.18
+          1 |          7       31.82      100.00
+------------+-----------------------------------
+      Total |         22      100.00
+
+. summ age
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+         age |         22          39    14.77127         20         67
+
+. type wave
+file wave not found
+r(601);
+
+. tab wave
+
+       wave |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |         22      100.00      100.00
+------------+-----------------------------------
+      Total |         22      100.00
+
+. log close
+      name:  <unnamed>
+       log:  D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Day 2.log
+  log type:  text
+ closed on:  26 Nov 2019, 10:17:09
+--------------------------------------------------------------------------------------------------

@@ -1,0 +1,239 @@
+--------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Day 5.log
+  log type:  text
+ opened on:  29 Nov 2019, 09:29:19
+
+. ranksum age, by(gender)
+
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+      gender |      obs    rank sum    expected
+-------------+---------------------------------
+        Male |       74      5907.5        6993
+      Female |      114     11858.5       10773
+-------------+---------------------------------
+    combined |      188       17766       17766
+
+unadjusted variance   132867.00
+adjustment for ties     -171.69
+                     ----------
+adjusted variance     132695.31
+
+Ho: age(gender==Male) = age(gender==Female)
+             z =  -2.980
+    Prob > |z| =   0.0029
+    Exact Prob =   0.0027
+
+. ranksum age, by(typhoid)
+
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+     typhoid |      obs    rank sum    expected
+-------------+---------------------------------
+          No |      172       16336       16254
+         Yes |       16        1430        1512
+-------------+---------------------------------
+    combined |      188       17766       17766
+
+unadjusted variance    43344.00
+adjustment for ties      -56.01
+                     ----------
+adjusted variance      43287.99
+
+Ho: age(typhoid==No) = age(typhoid==Yes)
+             z =   0.394
+    Prob > |z| =   0.6935
+    Exact Prob =   0.6970
+
+. kwallis agem by (race)
+variable agem not found
+r(111);
+
+. kwallis age, by (race)
+
+Kruskal-Wallis equality-of-populations rank test
+
+  +----------------------------+
+  |      race | Obs | Rank Sum |
+  |-----------+-----+----------|
+  |    Blacks | 145 | 13871.00 |
+  |    Whites |  18 |  1780.50 |
+  |    Asians |  10 |   894.00 |
+  | Coloureds |  15 |  1220.50 |
+  +----------------------------+
+
+chi-squared =     1.146 with 3 d.f.
+probability =     0.7659
+
+chi-squared with ties =     1.148 with 3 d.f.
+probability =     0.7655
+
+. kwallis age, by (education)
+
+Kruskal-Wallis equality-of-populations rank test
+
+  +--------------------------------------+
+  |           education | Obs | Rank Sum |
+  |---------------------+-----+----------|
+  |     Primary or less |  38 |  3792.50 |
+  |      Some secondary |  76 |  7313.50 |
+  | Completed secondary |  60 |  5154.50 |
+  |            Tertiary |  14 |  1505.50 |
+  +--------------------------------------+
+
+chi-squared =     2.737 with 3 d.f.
+probability =     0.4340
+
+chi-squared with ties =     2.740 with 3 d.f.
+probability =     0.4334
+
+. kwallis age, by (malaria)
+
+Kruskal-Wallis equality-of-populations rank test
+
+  +--------------------------+
+  | malaria | Obs | Rank Sum |
+  |---------+-----+----------|
+  |      No | 165 | 16768.00 |
+  |     Yes |  20 |   683.50 |
+  |      98 |   3 |   314.50 |
+  +--------------------------+
+
+chi-squared =    27.517 with 2 d.f.
+probability =     0.0001
+
+chi-squared with ties =    27.552 with 2 d.f.
+probability =     0.0001
+
+. cls
+
+. scatter bp weight
+
+. twoway( scatter by weight)  (lfit bp weight)
+variable by not found
+r(111);
+
+. twoway (scatter by weight)  (lfit bp weight)
+variable by not found
+r(111);
+
+. twoway (scatter bp weight)  (lfit bp weight)
+
+. 
+. corr bp weight
+(obs=169)
+
+             |       bp   weight
+-------------+------------------
+          bp |   1.0000
+      weight |  -0.1760   1.0000
+
+
+. spearman bp age
+
+ Number of obs =     169
+Spearman's rho =       0.5361
+
+Test of Ho: bp and age are independent
+    Prob > |t| =       0.0000
+
+. twoway( scatter bp weight) (lfit bp weight)
+
+. corr bp weight
+(obs=169)
+
+             |       bp   weight
+-------------+------------------
+          bp |   1.0000
+      weight |  -0.1760   1.0000
+
+
+. corr bp weight, sig
+option sig not allowed
+r(198);
+
+. corr bp weight height, sig
+option sig not allowed
+r(198);
+
+. pwcorr bp weight height, sig
+
+             |       bp   weight   height
+-------------+---------------------------
+          bp |   1.0000 
+             |
+             |
+      weight |  -0.1760   1.0000 
+             |   0.0221
+             |
+      height |   0.0953  -0.1895   1.0000 
+             |   0.2177   0.0090
+             |
+
+. regress bp weight
+
+      Source |       SS           df       MS      Number of obs   =       169
+-------------+----------------------------------   F(1, 167)       =      5.34
+       Model |  561.980517         1  561.980517   Prob > F        =    0.0221
+    Residual |  17583.0727       167  105.287861   R-squared       =    0.0310
+-------------+----------------------------------   Adj R-squared   =    0.0252
+       Total |  18145.0533       168  108.006269   Root MSE        =    10.261
+
+------------------------------------------------------------------------------
+          bp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      weight |  -.1034371   .0447718    -2.31   0.022    -.1918288   -.0150454
+       _cons |   109.2226   3.543091    30.83   0.000     102.2275    116.2176
+------------------------------------------------------------------------------
+
+. regress bp height
+
+      Source |       SS           df       MS      Number of obs   =       169
+-------------+----------------------------------   F(1, 167)       =      1.53
+       Model |  164.830158         1  164.830158   Prob > F        =    0.2177
+    Residual |  17980.2231       167  107.666007   R-squared       =    0.0091
+-------------+----------------------------------   Adj R-squared   =    0.0032
+       Total |  18145.0533       168  108.006269   Root MSE        =    10.376
+
+------------------------------------------------------------------------------
+          bp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      height |   3.337626   2.697483     1.24   0.218    -1.987935    8.663188
+       _cons |   96.03472   4.284042    22.42   0.000     87.57686    104.4926
+------------------------------------------------------------------------------
+
+. regress bp age
+
+      Source |       SS           df       MS      Number of obs   =       169
+-------------+----------------------------------   F(1, 167)       =     37.50
+       Model |   3327.0584         1   3327.0584   Prob > F        =    0.0000
+    Residual |  14817.9949       167  88.7305081   R-squared       =    0.1834
+-------------+----------------------------------   Adj R-squared   =    0.1785
+       Total |  18145.0533       168  108.006269   Root MSE        =    9.4197
+
+------------------------------------------------------------------------------
+          bp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         age |   .3908443   .0638278     6.12   0.000     .2648309    .5168577
+       _cons |   88.81653   2.154756    41.22   0.000     84.56246     93.0706
+------------------------------------------------------------------------------
+
+. regress bp age weight
+
+      Source |       SS           df       MS      Number of obs   =       169
+-------------+----------------------------------   F(2, 166)       =     23.84
+       Model |  4049.06214         2  2024.53107   Prob > F        =    0.0000
+    Residual |  14095.9911       166  84.9156091   R-squared       =    0.2231
+-------------+----------------------------------   Adj R-squared   =    0.2138
+       Total |  18145.0533       168  108.006269   Root MSE        =     9.215
+
+------------------------------------------------------------------------------
+          bp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         age |   .4007216   .0625324     6.41   0.000     .2772601     .524183
+      weight |   -.117415   .0402668    -2.92   0.004    -.1969162   -.0379138
+       _cons |   97.56083   3.665544    26.62   0.000     90.32373    104.7979
+------------------------------------------------------------------------------
+
+. exit, clear

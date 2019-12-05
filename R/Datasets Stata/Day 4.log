@@ -1,0 +1,2329 @@
+--------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Day 4.log
+  log type:  text
+ opened on:  28 Nov 2019, 09:03:29
+
+. br if race !=2 & educ == 4 & age > 20
+
+. cls
+
+. sum bp
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |        169    101.2426    10.39261         80        133
+
+. tab malaria , nolabel
+
+    malaria |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        165       87.30       87.30
+          1 |         20       10.58       97.88
+         98 |          4        2.12      100.00
+------------+-----------------------------------
+      Total |        189      100.00
+
+. tab malaria
+
+    malaria |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         No |        165       87.30       87.30
+        Yes |         20       10.58       97.88
+         98 |          4        2.12      100.00
+------------+-----------------------------------
+      Total |        189      100.00
+
+. sum bp if malaria==0 & age>18 & educ != 4
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |        130    101.6308    8.333307         84        117
+
+. sum bp if malaria==0 & age>=18 & educ != 4
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |        132    101.4545    8.391529         84        117
+
+. tab educ if age >=30 |  bp > 100
+
+          education |      Freq.     Percent        Cum.
+--------------------+-----------------------------------
+    Primary or less |         28       21.54       21.54
+     Some secondary |         49       37.69       59.23
+Completed secondary |         39       30.00       89.23
+           Tertiary |         14       10.77      100.00
+--------------------+-----------------------------------
+              Total |        130      100.00
+
+. sum bp, det
+
+                       blood pressure
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           80             80
+ 5%           84             80
+10%           88             80       Obs                 169
+25%           94             80       Sum of Wgt.         169
+
+50%          103                      Mean           101.2426
+                        Largest       Std. Dev.      10.39261
+75%          108            121
+90%          114            122       Variance       108.0063
+95%          117            130       Skewness       .0887927
+99%          130            133       Kurtosis       2.662159
+
+. hist bp, normal
+(bin=13, start=80, width=4.0769231)
+
+. sktest bp
+
+                    Skewness/Kurtosis tests for Normality
+                                                          ------ joint ------
+    Variable |        Obs  Pr(Skewness)  Pr(Kurtosis) adj chi2(2)   Prob>chi2
+-------------+---------------------------------------------------------------
+          bp |        169     0.6246        0.3922        0.98         0.6115
+
+. sum weigh, det
+
+                           weight
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           40             38
+ 5%           50             40
+10%           54             40       Obs                 189
+25%           66             42       Sum of Wgt.         189
+
+50%           76                      Mean           77.67196
+                        Largest       Std. Dev.      17.55957
+75%           90            118
+90%          100            118       Variance       308.3386
+95%          110            120       Skewness       .1997872
+99%          120            120       Kurtosis       2.771368
+
+. hist weight, normal
+(bin=13, start=38, width=6.3076923)
+
+. sktest weight
+
+                    Skewness/Kurtosis tests for Normality
+                                                          ------ joint ------
+    Variable |        Obs  Pr(Skewness)  Pr(Kurtosis) adj chi2(2)   Prob>chi2
+-------------+---------------------------------------------------------------
+      weight |        189     0.2493        0.6145        1.60         0.4495
+
+. net search univar
+(contacting http://www.stata.com)
+
+37 packages found (Stata Journal and STB listed first)
+------------------------------------------------------
+
+st0533 from http://www.stata-journal.com/software/sj18-3
+    SJ18-3 st0533. Univariate and multivariate outlier.. / Univariate and
+    multivariate outlier / identification / by Vincenzo Verardi, Universite de
+    Namur, Namur, / Belgium / Catherine Vermandale, Universite libre de /
+    Bruxelles, Brussels, Belgium / Support:  vverardiunamur.be,
+
+st0371 from http://www.stata-journal.com/software/sj15-1
+    SJ15-1 st0371. Generating univariate and... / Generating univariate and
+    multivariate nonnormal / data / by Sunbok Lee, Center of Family Research,
+    / University of Georgia, Athens, GA / Support:  sunboklee@gmail.com /
+    After installation, type help rnonnormal and / rmvnonnormal
+
+st0334 from http://www.stata-journal.com/software/sj14-2
+    SJ14-2 st0334. Univariate self-consistent... / Univariate self-consistent
+    density estimation / by Joerg Luedicke, Yale University and / University
+    of Florida-Gainesville / Alberto Bernacchia, Jacobs University, / Bremen,
+    Germany / Support:  joerg.luedicke@ufl.edu / After installation, type
+
+sg151_2 from http://www.stata-journal.com/software/sj12-3
+    SJ12-3 sg151_2.  Update: Sensible parameters for... / Update: Sensible
+    parameters for univariate and / multivariate splines / by Roger B. Newson,
+    National Heart and Lung Institute, / Imperial College London, London,
+    United Kingdom / Support:  r.newson@imperial.ac.uk / After installation,
+
+st0144 from http://www.stata-journal.com/software/sj8-2
+    SJ8-2 st0144.  SNP and SML estimation of univariate and... / SNP and SML
+    estimation of univariate and bivariate / binary-choice models / by
+    Giuseppe De Luca, University of Rome "Tor Vergata", / Rome, Italy /
+    Support:  delucgius@yahoo.it / After installation, type help snp and sml
+
+sg67_1 from http://www.stata.com/stb/stb51
+    STB-51 sg67_1.  Update to univar. / STB insert by John R. Gleason,
+    Syracuse University / Support:  loesljrg@accucom.net / After
+    installation, see help univar
+
+snp13 from http://www.stata.com/stb/stb38
+    STB-38 snp13.  Nonpar. assessment of multimodality for univariate data. /
+    STB insert by Isaas Hazarmabeth Salgado-Ugarte, Makoto Shimizu, / and Toru
+    Taniuchi. / Support: fes01@tzetzal.dcaa.unam.mx / Note:  The files
+    fig1to5.do and fig6.do produce the figures / in the insert. The files
+
+sg67 from http://www.stata.com/stb/stb36
+    STB36 sg67.  Univariate summaries with boxplots. / STB insert by John R.
+    Gleason, Syracuse University. / Support:  73241.717@compuserve.com /
+    After installation, see help univar.
+
+sed8 from http://www.stata.com/stb/stb21
+    STB-21 sed8.  Finding significant gaps in univariate distributions. / STB
+    insert by Richard Goldstein, Qualitas, Inc. / Support:
+    richgold@netcom.com / After installation, see help wgap.
+
+mvrs from http://www.homepages.ucl.ac.uk/~ucakjpr/stata
+    mvrs. Package for univariate and multivariable regression spline modelling
+    / Programs by Patrick Royston. / Distribution-Date: 20160226 / version:
+    2.0.1 (uvrs), 2.0.1 (mvrs), 1.2.3 (splinegen) / Please direct queries to
+    Patrick Royston (j.roystonucl.ac.uk)
+
+denormix from http://staskolenikov.net/stata
+    denormix -- Decomposition of the univariate (log-)normal mixture / Stas
+    Kolenikov
+
+ulogit from http://www.stata.com/users/jhilbe
+    ulogit.  Univariate LL tests for model identification / Program by Joseph
+    Hilbe, Arizona State Univ. <jhilbe@aol.com> / Statalist distribution, 27
+    January 1999. / Comparing the log-likelihood of a logistic regression
+    model containing only / the intercept with that of a model having a single
+
+tails from http://www.stata.com/meetings/6uk
+    Plotting and fitting univariate distributions with long or heavy tails /
+    Nicholas J. Cox / University of Durham / n.j.cox@durham.ac.uk / / Other
+    programs discussed in this paper, including histplot, distplot, /
+    quantil2, mdensity, skewplot, lmoments, have been published previously /
+
+actest from http://fmwww.bc.edu/RePEc/bocode/a
+    'ACTEST': module to perform Cumby-Huizinga general test for
+    autocorrelation in time series / actest performs the general specification
+    test of serial / correlation in a time series proposed by Cumby and
+    Huizinga / (1990, 1992).  It can be applied to a univariate time series or
+
+cctable from http://fmwww.bc.edu/RePEc/bocode/c
+    'CCTABLE': module to calculate summary table for case-control study /
+    Univariate case control analysis for each exposure, results are /
+    summarized into one table. One row, one exposure.  / KW: epidemiology /
+    KW: case-control analysis / KW: exposure / Requires: Stata version 8 /
+
+combineplot from http://fmwww.bc.edu/RePEc/bocode/c
+    'COMBINEPLOT': module to combine similar univariate or bivariate plots for
+    different variables / combineplot produces an array of plots for each
+    variable in / yvarlist combined, when specified, with each variable in /
+    xvarlist.  A command pattern must be specified for a univariate / or
+
+cstable from http://fmwww.bc.edu/RePEc/bocode/c
+    'CSTABLE': module to calculate summary table for cohort study / Univariate
+    cohort analysis for each exposure, results are / summarized into one
+    table. One row, one exposure. Result file / contains ordering number of
+    exposure(id), name of variable / (exposure), total number of exposed,
+
+extreme from http://fmwww.bc.edu/RePEc/bocode/e
+    'EXTREME': module to fit models used in univariate extreme value theory /
+    extreme estimates the most-used models in univariate extreme / value
+    theory, using Maximum Likelihood: the generalized Pareto / distribution
+    (GPD), which is appropriate for modeling exceedances / of a threshold; the
+
+fre from http://fmwww.bc.edu/RePEc/bocode/f
+    'FRE': module to display one-way frequency table / fre displays, for each
+    specified variable, a univariate / frequency table containing counts,
+    percent, and cumulative / percent. Variables may be string or numeric.
+    Labels, in full / length, and values are printed. By default, fre only
+
+grlogit from http://fmwww.bc.edu/RePEc/bocode/g
+    'GRLOGIT': module to plot logit of a variable by categories of another
+    variable / grlogit plots the logit of one variable against categories of /
+    another variable. This may be of some use in the beginning of / logistic
+    regression modelling. You could use this program to / confirm visually
+
+kdens from http://fmwww.bc.edu/RePEc/bocode/k
+    'KDENS': module for univariate kernel density estimation / kdens produces
+    univariate kernel density estimates and graphs / the result. kdens
+    supplements official Stata's kdensity. / Important additions are: adaptive
+    (i.e. variable bandwidth) / kernel density estimation, several automatic
+
+mdensity from http://fmwww.bc.edu/RePEc/bocode/m
+    'MDENSITY': module for univariate kernel density estimation, for variables
+    or groups / mdensity produces kernel density estimates for one or more /
+    variables or groups and graphs the result. mdensity is a wrapper / for
+    kdensity, which is called in turn for each variable or group / specified.
+
+moremata from http://fmwww.bc.edu/RePEc/bocode/m
+    'MOREMATA': module (Mata) to provide various functions / This package
+    includes various Mata functions. kern(): various / kernel functions;
+    kint(): kernel integral functions; kdel0(): / canonical bandwidth of
+    kernel; quantile(): quantile function; / median(): median; iqrange():
+
+mulogit from http://fmwww.bc.edu/RePEc/bocode/m
+    'MULOGIT': module to calculate multivariate and univariate odds ratios in
+    logistic regression / When using (unconditional) binary logistic
+    regression modeling, / the influence of confounders and nuisance
+    parameters on a / specific risk factor or treatment requires a comparison
+
+nharvey from http://fmwww.bc.edu/RePEc/bocode/n
+    'NHARVEY': module to perform Nyblom-Harvey panel test of common stochastic
+    trends / nharvey estimates one form of the test of common stochastic /
+    trends developed by Nyblom and Harvey (NH, 2000). The test is of / the
+    validity of a specified value of the rank of the covariance / matrix of
+
+normtest from http://fmwww.bc.edu/RePEc/bocode/n
+    'NORMTEST': module to perform tests of univariate kurtosis and skewness /
+    Computes measures and tests of univariate skew (g1, sqrt(b1)) and /
+    kurtosis (g2 and b2-3), and two omnibus tests of normality: / namely
+    D'agostino & Pearson K sq, and Jarque-Bera LM. This is / version 1.2 of
+
+omninorm from http://fmwww.bc.edu/RePEc/bocode/o
+    'OMNINORM': module to calculate omnibus test for univariate/multivariate
+    normality / omninorm implements an omnibus test for normality proposed by
+    / Doornik and Hansen (1994), who find that the test has superior / size
+    and power properties when compared to many in the / literature. omninorm
+
+robstat from http://fmwww.bc.edu/RePEc/bocode/r
+    'ROBSTAT': module to compute robust univariate statistics / robstat
+    estimates various classic and robust measures of / location, scale,
+    skewness, and kurtosis, and, optionally, / performs robust tests for
+    normality. For methodological details / see Jann, Verardi and Vermandele
+
+scdensity from http://fmwww.bc.edu/RePEc/bocode/s
+    'SCDENSITY': module to perform univariate self-consistent density
+    estimation / scdensity is an implementation of the self-consistent /
+    density estimator as described in Bernacchia & Pigolotti / (JRSS B, 2011).
+    The self-consistent method is a non-parametric / way to estimate a density
+
+tab_chi from http://fmwww.bc.edu/RePEc/bocode/t
+    'TAB_CHI': modules for tabulation of multiple variables in Stata 8.2 or
+    better / chitest and chitesti carry out chi-square tests for univariate /
+    frequency distributions. chitesti is the immediate command / version of
+    chitest. Both require Stata 8.2; earlier versions are / available as
+
+tkdensity from http://fmwww.bc.edu/RePEc/bocode/t
+    'TKDENSITY': module for univariate kernel density estimation with
+    calculation on transformed scale / tkdensity estimates and graphs kernel
+    density estimates for the / density function of a numeric variable, doing
+    the calculations on / a specified transformed scale and back-transforming
+
+ucgof from http://fmwww.bc.edu/RePEc/bocode/u
+    'UCGOF': module to perform univariate categorical goodness-of-fit tests /
+    ucgof displays the conventional chi-squared goodness-of-fit / tests for a
+    single categorical variable--namely, Pearson (χ²) / and likelihood-ratio
+    (G).  Standardized residuals and their / Bonferroni-adjusted p-values are
+
+umeta from http://fmwww.bc.edu/RePEc/bocode/u
+    'UMETA': module for u-statistic-based univariate and multivariate
+    random-effects meta-analysis / The umeta command performs
+    u-statistics-based random-effects / meta-analysis on a dataset of
+    univariate, bivariate or trivariate / point estimates, sampling variances,
+
+unitab from http://fmwww.bc.edu/RePEc/bocode/u
+    'UNITAB': program to display a univariate table for a binary outcome
+    variable / unitab produces a univariate table for a binary outcome
+    variable / where covariates could be categorical or continuous. It joins /
+    results coming from tabulate and logit command.  / Distribution-Date:
+
+univar from http://fmwww.bc.edu/RePEc/bocode/u
+    'UNIVAR': module to generate univariate summary with box-and-whiskers plot
+    / univar displays a univariate summary of each variable in varlist, /
+    using a horizontal format resembling that of summarize without / the
+    detail option. However, the output includes a five-number / summary
+
+wntstmvq from http://fmwww.bc.edu/RePEc/bocode/w
+    'WNTSTMVQ': module to compute multivariate Ljung-Box Q test / wntstmvq
+    performs the multivariate Ljung-Box portmanteau (or Q) / test for white
+    noise in a set of timeseries. This test is a / generalization of the
+    univariate Ljung-Box portmanteau (Q) test / implemented in Stata as
+
+sensparm from http://www.rogernewsonresources.org.uk/papers
+    sensparm: Sensible parameters for univariate and multivariate splines /
+    This is a pre-publication draft of a Stata Journal paper / (Newson, 2012).
+    The paper describes the bspline package, / which now has 3 modules. The
+    first, bspline, generates a / basis of Schoenberg B-splines. The second,
+
+
+23 references found in tables of contents
+-----------------------------------------
+
+http://www.stata-journal.com/software/sj18-3/
+    Stata Journal volume 18, issue 3 / Speaking Stata: From rounding to
+    binning / Customizing Stata graphs made easy (part 1) / Graphing each
+    individual's data over time / Update: Estimating net survival using a life
+    / table approach / Update: Estimating and modeling relative / survival /
+
+http://www.stata-journal.com/software/sj15-1/
+    Stata Journal volume 15, issue 1 / Easy management of complex spell data /
+    Update: Plotting regression coefficients / and other estimates / Extending
+    Stata by using the Maxima / computer algebra system / Update: Variable
+    selection in linear / regression / Two-part models / Compute two-sided
+
+http://www.stata-journal.com/software/sj14-2/
+    Stata Journal volume 14, issue 2 / Update: Generating the finest partition
+    that / is coarser than two given partitions / Importing Chinese historical
+    stock market / quotations from NetEase / Speaking Stata: Self and others /
+    Update: Making regression tables from stored / estimates / Update:
+
+http://www.stata-journal.com/software/sj12-3/
+    Stata Journal volume 12, issue 3 / Diagnostics for multiple imputation in
+    Stata / The Chen-Shapiro test for normality / Apportionment methods /
+    Adjusting for age effects in cross-sectional / distributions / A review of
+    Stata commands for fixed-effects / estimation in normal linear models /
+
+http://www.stata-journal.com/software/sj8-2/
+    Stata Journal volume 8, issue 2 / Contour enhanced funnel plots for
+    meta-analysis / Assign values to variables / Multinomial goodness-of-fit
+    tests / Fit a linear model with two high-dimensional fixed / effects / SNP
+    and SML estimation of univariate and bivariate / binary-choice models /
+
+http://www.stata.com/stb/stb51/
+    STB-51 September 1999 / Update to defv / Update to labedit / Update to
+    varxplor / Update of cut to Stata 6 / Calculating the product of
+    observations / Alternative ranking procedures / 3D surface plots / A
+    simple contour plot / Distribution function plots / Quantile plots,
+
+http://www.stata.com/stb/stb38/
+    STB-38 July 1997 / An enhancement of reshape / Age-specific reference
+    intervals for normally dist. data / Fixed and random-effects
+    meta-analysis, with graphics / Interquantile and simultaneous-quantile
+    regression / Routines to maximize a function / Enhancements of
+
+http://www.stata.com/stb/stb36/
+    STB-36 March 1997 / Convex hull plot / Easier bar charts / Spike plots for
+    histograms, rootograms, and time series / Using dialog boxes to vary
+    program parameters / Age-specific reference intervals (``normal ranges'')
+    / ORs and CIs for logistic reg. models with effect modif. / Univariate
+
+http://www.stata.com/stb/stb21/
+    STB-21 September 1994 / Direct standardization / Finding significant gaps
+    in univariate distributions / Fractional polynomials / Faster and easier
+    bootstrap estimation / Johansen's test for cointegration (part 1 of 2) /
+    sts9 continued (part 2 of 2) / Computerized index for the STB
+
+http://www.homepages.ucl.ac.uk/~ucakjpr/stata/
+    Materials by Patrick Royston / (Some of these programs are the work of
+    several people.) / These are the {cmd:latest versions} of my software.
+    Some may be less well tested, and some may even / have bugs. If you have
+    problems with a program, please contact me at j.roystonucl.ac.uk. /
+
+http://www.stata.com/users/jhilbe/
+    Materials by Joseph Hilbe, Arizona State University / The following
+    programs have been supplied by Joseph Hilbe, who retired from / the
+    University of Hawaii in 1990 and since 1992 has served has an adjunct /
+    professor at Arizona State University.  Dr. Hilbe was the founding editor
+
+http://fmwww.bc.edu/RePEc/bocode/c/
+    module to generate calendar / module to estimate proportions and means
+    after survey data have been calibrated to population totals / module for
+    inverse regression and calibration / module to calibrate survey datasets
+    to population totals / module to compute Calinski-Harabasz cluster
+
+http://fmwww.bc.edu/RePEc/bocode/e/
+    module to estimate endogenous attribute attendance models / module to
+    perform extreme bound analysis / module to perform Entropy reweighting to
+    create balanced samples / module to to display variables in the Data
+    Editor, ordered by varlist / module to compute Exact and Approximate
+
+http://fmwww.bc.edu/RePEc/bocode/k/
+    module to compute Krippendorff's Alpha-Reliability / module to estimate
+    Krippendorff's alpha for nominal variables / module to compute confidence
+    intervals for the kappa statistic / module to graph examples of
+    distributions of varying kurtosis / module to produce Generalizations of
+
+http://fmwww.bc.edu/RePEc/bocode/m/
+    module to implement interpoint distance distribution analysis / module to
+    unabbreviate Global Macro Lists / module to perform Dickey-Fuller test on
+    panel data / module to calculate Median Absolute Deviations / module to
+    select matching observations based on a Mahalanobis distance measure /
+
+http://fmwww.bc.edu/RePEc/bocode/n/
+    module to identify and adjust outliers of a variable assumed to follow a
+    negative binomial distribution / module to generate graph command (and
+    optionally graph) timeseries vs. NBER recession dating / module for
+    fitting negative binomial distribution by maximum likelihood / module to
+
+http://fmwww.bc.edu/RePEc/bocode/o/
+    module to compute the Blinder-Oaxaca decomposition / module to compute
+    decompositions of outcome differentials / module to compute the
+    Blinder-Oaxaca decomposition / module to identify differences in values
+    across observations for a variable / module to display observations of
+
+http://fmwww.bc.edu/RePEc/bocode/r/
+    module to compute McKelvey & Zavoina's R2 / module to compute several fit
+    statistics for count data models / module to perform Overall System
+    (NL-SUR) System R2, Adj. R2, F-Test, and Chi2-Test / module to calculate
+    an ordinal explained variation statistic / module to compute System R2,
+
+http://fmwww.bc.edu/RePEc/bocode/s/
+    module to compute Sequence Analysis Distance Measures / module to provide
+    commands and mata functions devoted to unit level small area estimation /
+    module to drop variables if and only if varnames specified in full /
+    module to compute sample size for an intra-class correlation (ICC) /
+
+http://fmwww.bc.edu/RePEc/bocode/t/
+    module to report Mean Comparison for variables between two groups with
+    formatted table output in DOCX file / module to perform Tukey's Two-Way
+    Analysis by Medians / module to produce a one-way table as a matrix /
+    module to handle two-way tables with percentages / module to handle
+
+http://fmwww.bc.edu/RePEc/bocode/u/
+    module to provide prefix command for unicode utilities / module to perform
+    univariate categorical goodness-of-fit tests / module to extract paradata
+    from a string variable produced by the universal client-side paradata
+    script / module to estimate the generalized unidiff model for
+
+http://www.rogernewsonresources.org.uk/papers/
+    Papers written by Roger Newson / These are pre-publication drafts,
+    post-publication updates, published papers / or unpublished papers written
+    by Roger Newson. Each package contains / a paper as an ancillary file,
+    which the user can download to his/her / current directory by typing / net
+
+https://stats.idre.ucla.edu/stat/stata/ado/teach/
+    Welcome to UCLA Academic Technology Services Stata programs. / These
+    programs include teaching tools. / For more information about these
+    programs, see / our web page at http://www.ats.ucla.edu/stat/stata/ /
+    Teaching Tools on Univariate Distributions / How "N" and "conf. level"
+
+
+. help univar
+
+. findit univar
+
+. net search univar
+(contacting http://www.stata.com)
+
+37 packages found (Stata Journal and STB listed first)
+------------------------------------------------------
+
+st0533 from http://www.stata-journal.com/software/sj18-3
+    SJ18-3 st0533. Univariate and multivariate outlier.. / Univariate and
+    multivariate outlier / identification / by Vincenzo Verardi, Universite de
+    Namur, Namur, / Belgium / Catherine Vermandale, Universite libre de /
+    Bruxelles, Brussels, Belgium / Support:  vverardiunamur.be,
+
+st0371 from http://www.stata-journal.com/software/sj15-1
+    SJ15-1 st0371. Generating univariate and... / Generating univariate and
+    multivariate nonnormal / data / by Sunbok Lee, Center of Family Research,
+    / University of Georgia, Athens, GA / Support:  sunboklee@gmail.com /
+    After installation, type help rnonnormal and / rmvnonnormal
+
+st0334 from http://www.stata-journal.com/software/sj14-2
+    SJ14-2 st0334. Univariate self-consistent... / Univariate self-consistent
+    density estimation / by Joerg Luedicke, Yale University and / University
+    of Florida-Gainesville / Alberto Bernacchia, Jacobs University, / Bremen,
+    Germany / Support:  joerg.luedicke@ufl.edu / After installation, type
+
+sg151_2 from http://www.stata-journal.com/software/sj12-3
+    SJ12-3 sg151_2.  Update: Sensible parameters for... / Update: Sensible
+    parameters for univariate and / multivariate splines / by Roger B. Newson,
+    National Heart and Lung Institute, / Imperial College London, London,
+    United Kingdom / Support:  r.newson@imperial.ac.uk / After installation,
+
+st0144 from http://www.stata-journal.com/software/sj8-2
+    SJ8-2 st0144.  SNP and SML estimation of univariate and... / SNP and SML
+    estimation of univariate and bivariate / binary-choice models / by
+    Giuseppe De Luca, University of Rome "Tor Vergata", / Rome, Italy /
+    Support:  delucgius@yahoo.it / After installation, type help snp and sml
+
+sg67_1 from http://www.stata.com/stb/stb51
+    STB-51 sg67_1.  Update to univar. / STB insert by John R. Gleason,
+    Syracuse University / Support:  loesljrg@accucom.net / After
+    installation, see help univar
+
+snp13 from http://www.stata.com/stb/stb38
+    STB-38 snp13.  Nonpar. assessment of multimodality for univariate data. /
+    STB insert by Isaas Hazarmabeth Salgado-Ugarte, Makoto Shimizu, / and Toru
+    Taniuchi. / Support: fes01@tzetzal.dcaa.unam.mx / Note:  The files
+    fig1to5.do and fig6.do produce the figures / in the insert. The files
+
+sg67 from http://www.stata.com/stb/stb36
+    STB36 sg67.  Univariate summaries with boxplots. / STB insert by John R.
+    Gleason, Syracuse University. / Support:  73241.717@compuserve.com /
+    After installation, see help univar.
+
+sed8 from http://www.stata.com/stb/stb21
+    STB-21 sed8.  Finding significant gaps in univariate distributions. / STB
+    insert by Richard Goldstein, Qualitas, Inc. / Support:
+    richgold@netcom.com / After installation, see help wgap.
+
+mvrs from http://www.homepages.ucl.ac.uk/~ucakjpr/stata
+    mvrs. Package for univariate and multivariable regression spline modelling
+    / Programs by Patrick Royston. / Distribution-Date: 20160226 / version:
+    2.0.1 (uvrs), 2.0.1 (mvrs), 1.2.3 (splinegen) / Please direct queries to
+    Patrick Royston (j.roystonucl.ac.uk)
+
+denormix from http://staskolenikov.net/stata
+    denormix -- Decomposition of the univariate (log-)normal mixture / Stas
+    Kolenikov
+
+ulogit from http://www.stata.com/users/jhilbe
+    ulogit.  Univariate LL tests for model identification / Program by Joseph
+    Hilbe, Arizona State Univ. <jhilbe@aol.com> / Statalist distribution, 27
+    January 1999. / Comparing the log-likelihood of a logistic regression
+    model containing only / the intercept with that of a model having a single
+
+tails from http://www.stata.com/meetings/6uk
+    Plotting and fitting univariate distributions with long or heavy tails /
+    Nicholas J. Cox / University of Durham / n.j.cox@durham.ac.uk / / Other
+    programs discussed in this paper, including histplot, distplot, /
+    quantil2, mdensity, skewplot, lmoments, have been published previously /
+
+actest from http://fmwww.bc.edu/RePEc/bocode/a
+    'ACTEST': module to perform Cumby-Huizinga general test for
+    autocorrelation in time series / actest performs the general specification
+    test of serial / correlation in a time series proposed by Cumby and
+    Huizinga / (1990, 1992).  It can be applied to a univariate time series or
+
+cctable from http://fmwww.bc.edu/RePEc/bocode/c
+    'CCTABLE': module to calculate summary table for case-control study /
+    Univariate case control analysis for each exposure, results are /
+    summarized into one table. One row, one exposure.  / KW: epidemiology /
+    KW: case-control analysis / KW: exposure / Requires: Stata version 8 /
+
+combineplot from http://fmwww.bc.edu/RePEc/bocode/c
+    'COMBINEPLOT': module to combine similar univariate or bivariate plots for
+    different variables / combineplot produces an array of plots for each
+    variable in / yvarlist combined, when specified, with each variable in /
+    xvarlist.  A command pattern must be specified for a univariate / or
+
+cstable from http://fmwww.bc.edu/RePEc/bocode/c
+    'CSTABLE': module to calculate summary table for cohort study / Univariate
+    cohort analysis for each exposure, results are / summarized into one
+    table. One row, one exposure. Result file / contains ordering number of
+    exposure(id), name of variable / (exposure), total number of exposed,
+
+extreme from http://fmwww.bc.edu/RePEc/bocode/e
+    'EXTREME': module to fit models used in univariate extreme value theory /
+    extreme estimates the most-used models in univariate extreme / value
+    theory, using Maximum Likelihood: the generalized Pareto / distribution
+    (GPD), which is appropriate for modeling exceedances / of a threshold; the
+
+fre from http://fmwww.bc.edu/RePEc/bocode/f
+    'FRE': module to display one-way frequency table / fre displays, for each
+    specified variable, a univariate / frequency table containing counts,
+    percent, and cumulative / percent. Variables may be string or numeric.
+    Labels, in full / length, and values are printed. By default, fre only
+
+grlogit from http://fmwww.bc.edu/RePEc/bocode/g
+    'GRLOGIT': module to plot logit of a variable by categories of another
+    variable / grlogit plots the logit of one variable against categories of /
+    another variable. This may be of some use in the beginning of / logistic
+    regression modelling. You could use this program to / confirm visually
+
+kdens from http://fmwww.bc.edu/RePEc/bocode/k
+    'KDENS': module for univariate kernel density estimation / kdens produces
+    univariate kernel density estimates and graphs / the result. kdens
+    supplements official Stata's kdensity. / Important additions are: adaptive
+    (i.e. variable bandwidth) / kernel density estimation, several automatic
+
+mdensity from http://fmwww.bc.edu/RePEc/bocode/m
+    'MDENSITY': module for univariate kernel density estimation, for variables
+    or groups / mdensity produces kernel density estimates for one or more /
+    variables or groups and graphs the result. mdensity is a wrapper / for
+    kdensity, which is called in turn for each variable or group / specified.
+
+moremata from http://fmwww.bc.edu/RePEc/bocode/m
+    'MOREMATA': module (Mata) to provide various functions / This package
+    includes various Mata functions. kern(): various / kernel functions;
+    kint(): kernel integral functions; kdel0(): / canonical bandwidth of
+    kernel; quantile(): quantile function; / median(): median; iqrange():
+
+mulogit from http://fmwww.bc.edu/RePEc/bocode/m
+    'MULOGIT': module to calculate multivariate and univariate odds ratios in
+    logistic regression / When using (unconditional) binary logistic
+    regression modeling, / the influence of confounders and nuisance
+    parameters on a / specific risk factor or treatment requires a comparison
+
+nharvey from http://fmwww.bc.edu/RePEc/bocode/n
+    'NHARVEY': module to perform Nyblom-Harvey panel test of common stochastic
+    trends / nharvey estimates one form of the test of common stochastic /
+    trends developed by Nyblom and Harvey (NH, 2000). The test is of / the
+    validity of a specified value of the rank of the covariance / matrix of
+
+normtest from http://fmwww.bc.edu/RePEc/bocode/n
+    'NORMTEST': module to perform tests of univariate kurtosis and skewness /
+    Computes measures and tests of univariate skew (g1, sqrt(b1)) and /
+    kurtosis (g2 and b2-3), and two omnibus tests of normality: / namely
+    D'agostino & Pearson K sq, and Jarque-Bera LM. This is / version 1.2 of
+
+omninorm from http://fmwww.bc.edu/RePEc/bocode/o
+    'OMNINORM': module to calculate omnibus test for univariate/multivariate
+    normality / omninorm implements an omnibus test for normality proposed by
+    / Doornik and Hansen (1994), who find that the test has superior / size
+    and power properties when compared to many in the / literature. omninorm
+
+robstat from http://fmwww.bc.edu/RePEc/bocode/r
+    'ROBSTAT': module to compute robust univariate statistics / robstat
+    estimates various classic and robust measures of / location, scale,
+    skewness, and kurtosis, and, optionally, / performs robust tests for
+    normality. For methodological details / see Jann, Verardi and Vermandele
+
+scdensity from http://fmwww.bc.edu/RePEc/bocode/s
+    'SCDENSITY': module to perform univariate self-consistent density
+    estimation / scdensity is an implementation of the self-consistent /
+    density estimator as described in Bernacchia & Pigolotti / (JRSS B, 2011).
+    The self-consistent method is a non-parametric / way to estimate a density
+
+tab_chi from http://fmwww.bc.edu/RePEc/bocode/t
+    'TAB_CHI': modules for tabulation of multiple variables in Stata 8.2 or
+    better / chitest and chitesti carry out chi-square tests for univariate /
+    frequency distributions. chitesti is the immediate command / version of
+    chitest. Both require Stata 8.2; earlier versions are / available as
+
+tkdensity from http://fmwww.bc.edu/RePEc/bocode/t
+    'TKDENSITY': module for univariate kernel density estimation with
+    calculation on transformed scale / tkdensity estimates and graphs kernel
+    density estimates for the / density function of a numeric variable, doing
+    the calculations on / a specified transformed scale and back-transforming
+
+ucgof from http://fmwww.bc.edu/RePEc/bocode/u
+    'UCGOF': module to perform univariate categorical goodness-of-fit tests /
+    ucgof displays the conventional chi-squared goodness-of-fit / tests for a
+    single categorical variable--namely, Pearson (χ²) / and likelihood-ratio
+    (G).  Standardized residuals and their / Bonferroni-adjusted p-values are
+
+umeta from http://fmwww.bc.edu/RePEc/bocode/u
+    'UMETA': module for u-statistic-based univariate and multivariate
+    random-effects meta-analysis / The umeta command performs
+    u-statistics-based random-effects / meta-analysis on a dataset of
+    univariate, bivariate or trivariate / point estimates, sampling variances,
+
+unitab from http://fmwww.bc.edu/RePEc/bocode/u
+    'UNITAB': program to display a univariate table for a binary outcome
+    variable / unitab produces a univariate table for a binary outcome
+    variable / where covariates could be categorical or continuous. It joins /
+    results coming from tabulate and logit command.  / Distribution-Date:
+
+univar from http://fmwww.bc.edu/RePEc/bocode/u
+    'UNIVAR': module to generate univariate summary with box-and-whiskers plot
+    / univar displays a univariate summary of each variable in varlist, /
+    using a horizontal format resembling that of summarize without / the
+    detail option. However, the output includes a five-number / summary
+
+wntstmvq from http://fmwww.bc.edu/RePEc/bocode/w
+    'WNTSTMVQ': module to compute multivariate Ljung-Box Q test / wntstmvq
+    performs the multivariate Ljung-Box portmanteau (or Q) / test for white
+    noise in a set of timeseries. This test is a / generalization of the
+    univariate Ljung-Box portmanteau (Q) test / implemented in Stata as
+
+sensparm from http://www.rogernewsonresources.org.uk/papers
+    sensparm: Sensible parameters for univariate and multivariate splines /
+    This is a pre-publication draft of a Stata Journal paper / (Newson, 2012).
+    The paper describes the bspline package, / which now has 3 modules. The
+    first, bspline, generates a / basis of Schoenberg B-splines. The second,
+
+
+23 references found in tables of contents
+-----------------------------------------
+
+http://www.stata-journal.com/software/sj18-3/
+    Stata Journal volume 18, issue 3 / Speaking Stata: From rounding to
+    binning / Customizing Stata graphs made easy (part 1) / Graphing each
+    individual's data over time / Update: Estimating net survival using a life
+    / table approach / Update: Estimating and modeling relative / survival /
+
+http://www.stata-journal.com/software/sj15-1/
+    Stata Journal volume 15, issue 1 / Easy management of complex spell data /
+    Update: Plotting regression coefficients / and other estimates / Extending
+    Stata by using the Maxima / computer algebra system / Update: Variable
+    selection in linear / regression / Two-part models / Compute two-sided
+
+http://www.stata-journal.com/software/sj14-2/
+    Stata Journal volume 14, issue 2 / Update: Generating the finest partition
+    that / is coarser than two given partitions / Importing Chinese historical
+    stock market / quotations from NetEase / Speaking Stata: Self and others /
+    Update: Making regression tables from stored / estimates / Update:
+
+http://www.stata-journal.com/software/sj12-3/
+    Stata Journal volume 12, issue 3 / Diagnostics for multiple imputation in
+    Stata / The Chen-Shapiro test for normality / Apportionment methods /
+    Adjusting for age effects in cross-sectional / distributions / A review of
+    Stata commands for fixed-effects / estimation in normal linear models /
+
+http://www.stata-journal.com/software/sj8-2/
+    Stata Journal volume 8, issue 2 / Contour enhanced funnel plots for
+    meta-analysis / Assign values to variables / Multinomial goodness-of-fit
+    tests / Fit a linear model with two high-dimensional fixed / effects / SNP
+    and SML estimation of univariate and bivariate / binary-choice models /
+
+http://www.stata.com/stb/stb51/
+    STB-51 September 1999 / Update to defv / Update to labedit / Update to
+    varxplor / Update of cut to Stata 6 / Calculating the product of
+    observations / Alternative ranking procedures / 3D surface plots / A
+    simple contour plot / Distribution function plots / Quantile plots,
+
+http://www.stata.com/stb/stb38/
+    STB-38 July 1997 / An enhancement of reshape / Age-specific reference
+    intervals for normally dist. data / Fixed and random-effects
+    meta-analysis, with graphics / Interquantile and simultaneous-quantile
+    regression / Routines to maximize a function / Enhancements of
+
+http://www.stata.com/stb/stb36/
+    STB-36 March 1997 / Convex hull plot / Easier bar charts / Spike plots for
+    histograms, rootograms, and time series / Using dialog boxes to vary
+    program parameters / Age-specific reference intervals (``normal ranges'')
+    / ORs and CIs for logistic reg. models with effect modif. / Univariate
+
+http://www.stata.com/stb/stb21/
+    STB-21 September 1994 / Direct standardization / Finding significant gaps
+    in univariate distributions / Fractional polynomials / Faster and easier
+    bootstrap estimation / Johansen's test for cointegration (part 1 of 2) /
+    sts9 continued (part 2 of 2) / Computerized index for the STB
+
+http://www.homepages.ucl.ac.uk/~ucakjpr/stata/
+    Materials by Patrick Royston / (Some of these programs are the work of
+    several people.) / These are the {cmd:latest versions} of my software.
+    Some may be less well tested, and some may even / have bugs. If you have
+    problems with a program, please contact me at j.roystonucl.ac.uk. /
+
+http://www.stata.com/users/jhilbe/
+    Materials by Joseph Hilbe, Arizona State University / The following
+    programs have been supplied by Joseph Hilbe, who retired from / the
+    University of Hawaii in 1990 and since 1992 has served has an adjunct /
+    professor at Arizona State University.  Dr. Hilbe was the founding editor
+
+http://fmwww.bc.edu/RePEc/bocode/c/
+    module to generate calendar / module to estimate proportions and means
+    after survey data have been calibrated to population totals / module for
+    inverse regression and calibration / module to calibrate survey datasets
+    to population totals / module to compute Calinski-Harabasz cluster
+
+http://fmwww.bc.edu/RePEc/bocode/e/
+    module to estimate endogenous attribute attendance models / module to
+    perform extreme bound analysis / module to perform Entropy reweighting to
+    create balanced samples / module to to display variables in the Data
+    Editor, ordered by varlist / module to compute Exact and Approximate
+
+http://fmwww.bc.edu/RePEc/bocode/k/
+    module to compute Krippendorff's Alpha-Reliability / module to estimate
+    Krippendorff's alpha for nominal variables / module to compute confidence
+    intervals for the kappa statistic / module to graph examples of
+    distributions of varying kurtosis / module to produce Generalizations of
+
+http://fmwww.bc.edu/RePEc/bocode/m/
+    module to implement interpoint distance distribution analysis / module to
+    unabbreviate Global Macro Lists / module to perform Dickey-Fuller test on
+    panel data / module to calculate Median Absolute Deviations / module to
+    select matching observations based on a Mahalanobis distance measure /
+
+http://fmwww.bc.edu/RePEc/bocode/n/
+    module to identify and adjust outliers of a variable assumed to follow a
+    negative binomial distribution / module to generate graph command (and
+    optionally graph) timeseries vs. NBER recession dating / module for
+    fitting negative binomial distribution by maximum likelihood / module to
+
+http://fmwww.bc.edu/RePEc/bocode/o/
+    module to compute the Blinder-Oaxaca decomposition / module to compute
+    decompositions of outcome differentials / module to compute the
+    Blinder-Oaxaca decomposition / module to identify differences in values
+    across observations for a variable / module to display observations of
+
+http://fmwww.bc.edu/RePEc/bocode/r/
+    module to compute McKelvey & Zavoina's R2 / module to compute several fit
+    statistics for count data models / module to perform Overall System
+    (NL-SUR) System R2, Adj. R2, F-Test, and Chi2-Test / module to calculate
+    an ordinal explained variation statistic / module to compute System R2,
+
+http://fmwww.bc.edu/RePEc/bocode/s/
+    module to compute Sequence Analysis Distance Measures / module to provide
+    commands and mata functions devoted to unit level small area estimation /
+    module to drop variables if and only if varnames specified in full /
+    module to compute sample size for an intra-class correlation (ICC) /
+
+http://fmwww.bc.edu/RePEc/bocode/t/
+    module to report Mean Comparison for variables between two groups with
+    formatted table output in DOCX file / module to perform Tukey's Two-Way
+    Analysis by Medians / module to produce a one-way table as a matrix /
+    module to handle two-way tables with percentages / module to handle
+
+http://fmwww.bc.edu/RePEc/bocode/u/
+    module to provide prefix command for unicode utilities / module to perform
+    univariate categorical goodness-of-fit tests / module to extract paradata
+    from a string variable produced by the universal client-side paradata
+    script / module to estimate the generalized unidiff model for
+
+http://www.rogernewsonresources.org.uk/papers/
+    Papers written by Roger Newson / These are pre-publication drafts,
+    post-publication updates, published papers / or unpublished papers written
+    by Roger Newson. Each package contains / a paper as an ancillary file,
+    which the user can download to his/her / current directory by typing / net
+
+https://stats.idre.ucla.edu/stat/stata/ado/teach/
+    Welcome to UCLA Academic Technology Services Stata programs. / These
+    programs include teaching tools. / For more information about these
+    programs, see / our web page at http://www.ats.ucla.edu/stat/stata/ /
+    Teaching Tools on Univariate Distributions / How "N" and "conf. level"
+
+
+. univar bp
+                                        -------------- Quantiles --------------
+Variable       n     Mean     S.D.      Min      .25      Mdn      .75      Max
+-------------------------------------------------------------------------------
+      bp     169   101.24    10.39    80.00    94.00   103.00   108.00   133.00
+-------------------------------------------------------------------------------
+
+. cls
+
+. univar bp
+                                        -------------- Quantiles --------------
+Variable       n     Mean     S.D.      Min      .25      Mdn      .75      Max
+-------------------------------------------------------------------------------
+      bp     169   101.24    10.39    80.00    94.00   103.00   108.00   133.00
+-------------------------------------------------------------------------------
+
+. help univar
+
+. tabstat bp, stat(mean q min max)
+
+    variable |      mean       p25       p50       p75       min       max
+-------------+------------------------------------------------------------
+          bp |  101.2426        94       103       108        80       133
+--------------------------------------------------------------------------
+
+. tabstat bp, stat(mean q min max sk)
+
+    variable |      mean       p25       p50       p75       min       max  skewness
+-------------+----------------------------------------------------------------------
+          bp |  101.2426        94       103       108        80       133  .0887927
+------------------------------------------------------------------------------------
+
+. tabstat bp, stat(mean med q min max sk)
+
+    variable |      mean       p50       p25       p50       p75       min       max  skewness
+-------------+--------------------------------------------------------------------------------
+          bp |  101.2426       103        94       103       108        80       133  .0887927
+----------------------------------------------------------------------------------------------
+
+. tabstat bp, stat(mean median q min max sk sd)
+
+    variable |      mean       p50       p25       p50       p75       min       max  skewness
+-------------+--------------------------------------------------------------------------------
+          bp |  101.2426       103        94       103       108        80       133  .0887927
+----------------------------------------------------------------------------------------------
+
+    variable |        sd
+-------------+----------
+          bp |  10.39261
+------------------------
+
+. tabstat bp, stat(mean q min max sk sd ku)
+
+    variable |      mean       p25       p50       p75       min       max  skewness        sd
+-------------+--------------------------------------------------------------------------------
+          bp |  101.2426        94       103       108        80       133  .0887927  10.39261
+----------------------------------------------------------------------------------------------
+
+    variable |  kurtosis
+-------------+----------
+          bp |  2.662159
+------------------------
+
+. help tabstat
+
+. table education , c(mean bp)
+
+--------------------------------
+          education |   mean(bp)
+--------------------+-----------
+    Primary or less |   99.48485
+     Some secondary |   100.0143
+Completed secondary |   100.1538
+           Tertiary |   115.5714
+--------------------------------
+
+. bysort education: sum bp
+
+--------------------------------------------------------------------------------------------------
+-> education = Primary or less
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |         33    99.48485    8.016082         84        117
+
+--------------------------------------------------------------------------------------------------
+-> education = Some secondary
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |         70    100.0143    9.537862         80        117
+
+--------------------------------------------------------------------------------------------------
+-> education = Completed secondary
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |         52    100.1538    10.58187         80        117
+
+--------------------------------------------------------------------------------------------------
+-> education = Tertiary
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |         14    115.5714    8.581862        105        133
+
+
+. /* c   - give me a column */
+/ is not a valid command name
+r(199);
+
+. */ c - give me a column /*
+
+. table education, c(mean bp sd bp iqr bp)
+
+--------------------------------------------------------
+          education |   mean(bp)      sd(bp)     iqr(bp)
+--------------------+-----------------------------------
+    Primary or less |   99.48485    8.016083          10
+     Some secondary |   100.0143    9.537862          15
+Completed secondary |   100.1538    10.58187          17
+           Tertiary |   115.5714    8.581861          12
+--------------------------------------------------------
+
+. table education, c(mean bp sd bp iqr bp  min  max  bpc)
+variable max not found
+r(111);
+
+. table education, c(mean bp sd bp iqr bp  min  max)
+variable max not found
+r(111);
+
+. table education, c(mean bp sd bp iqr bp  min)
+min invalid or requires argument
+r(198);
+
+. table education, c(mean bp sd bp iqr bp)
+
+--------------------------------------------------------
+          education |   mean(bp)      sd(bp)     iqr(bp)
+--------------------+-----------------------------------
+    Primary or less |   99.48485    8.016083          10
+     Some secondary |   100.0143    9.537862          15
+Completed secondary |   100.1538    10.58187          17
+           Tertiary |   115.5714    8.581861          12
+--------------------------------------------------------
+
+. * different way of presenting *
+
+. table education race, c( mean bp sd bp median bp)
+
+----------------------------------------------------------------
+                    |           race group of patient           
+          education |    Blacks     Whites     Asians  Coloureds
+--------------------+-------------------------------------------
+    Primary or less |      99.2                         102.3333
+                    |  8.180717                         6.658328
+                    |        98                              104
+                    | 
+     Some secondary |     98.75   103.1765         95        103
+                    |  9.621563   9.554026               7.25718
+                    |        98        104         95      102.5
+                    | 
+Completed secondary |  100.5238              99.66666         97
+                    |  10.65704              10.48173   12.35583
+                    |       104                 101.5       96.5
+                    | 
+           Tertiary |  115.9231                              111
+                    |  8.826678                                 
+                    |       115                              111
+----------------------------------------------------------------
+
+. clear
+
+. clear
+
+. cls
+
+. input id str10 name hiv sex smoke age
+
+            id        name        hiv        sex      smoke        age
+  1. 1 Constance 1 2 0 18
+  2. Cornelius 1 1 1 50
+'Cornelius' cannot be read as a number
+  2. Edwin 0 1 1 60
+'Edwin' cannot be read as a number
+  2. Mlungisi  1 1 1 55
+'Mlungisi' cannot be read as a number
+  2. Bongiwe  0 2 0 30
+'Bongiwe' cannot be read as a number
+  2. Mavis  1 2 0 30
+'Mavis' cannot be read as a number
+  2. 7 Anene 1 2 1 28
+  3. Cathrine 0 2 0 15
+'Cathrine' cannot be read as a number
+  3. 9 Hannan 1 2 1 19
+  4. 10  Rekhotso  1 1 0 14
+  5. end
+
+. br
+
+. edit
+
+. set obs 5
+number of observations (_N) was 4, now 5
+
+. replace id = 2 in 5
+(1 real change made)
+
+. replace name = "Cornelius " in 5
+(1 real change made)
+
+. replace hiv = 1 in 5
+(1 real change made)
+
+. replace sex = 1 in 5
+(1 real change made)
+
+. replace smoke = 1 in 5
+(1 real change made)
+
+. replace age = 50 in 5
+(1 real change made)
+
+. set obs 6
+number of observations (_N) was 5, now 6
+
+. replace id = 3 in 6
+(1 real change made)
+
+. replace name = "Edwin" in 6
+(1 real change made)
+
+. replace hiv = 0 in 6
+(1 real change made)
+
+. replace sex = 1 in 6
+(1 real change made)
+
+. replace smoke = 1 in 6
+(1 real change made)
+
+. replace age = 60 in 6
+(1 real change made)
+
+. set obs 7
+number of observations (_N) was 6, now 7
+
+. replace id = 4 in 7
+(1 real change made)
+
+. replace name = "Mlungisi" in 7
+(1 real change made)
+
+. replace hiv = 1 in 7
+(1 real change made)
+
+. replace sex = 1 in 7
+(1 real change made)
+
+. replace smoke = 1 in 7
+(1 real change made)
+
+. replace age = 55 in 7
+(1 real change made)
+
+. set obs 8
+number of observations (_N) was 7, now 8
+
+. replace id = 6 in 8
+(1 real change made)
+
+. replace name = "Mavis" in 8
+(1 real change made)
+
+. replace hiv = 1 in 8
+(1 real change made)
+
+. replace sex = 2 in 8
+(1 real change made)
+
+. replace smoke = 0 in 8
+(1 real change made)
+
+. replace age = 24 in 8
+(1 real change made)
+
+. set obs 9
+number of observations (_N) was 8, now 9
+
+. replace id = 8 in 9
+(1 real change made)
+
+. replace name = "Cathrine" in 9
+(1 real change made)
+
+. replace hiv = 0 in 9
+(1 real change made)
+
+. replace sex = 2 in 9
+(1 real change made)
+
+. replace smoke = 0 in 9
+(1 real change made)
+
+. replace age = 15 in 9
+(1 real change made)
+
+. set obs 10
+number of observations (_N) was 9, now 10
+
+. replace id = 5 in 10
+(1 real change made)
+
+. replace name = "Bongiwe" in 10
+(1 real change made)
+
+. replace hiv = 0 in 10
+(1 real change made)
+
+. replace sex = 2 in 10
+(1 real change made)
+
+. replace smoke = 0 in 10
+(1 real change made)
+
+. replace age = 30 in 10
+(1 real change made)
+
+. mean age
+
+Mean estimation                   Number of obs   =         10
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+         age |       31.3   5.471238       18.9232     43.6768
+--------------------------------------------------------------
+
+. tab hiv
+
+        hiv |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |          3       30.00       30.00
+          1 |          7       70.00      100.00
+------------+-----------------------------------
+      Total |         10      100.00
+
+. 
+. cls
+
+. do
+invalid file specification
+r(198);
+
+. save "D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Input_class_crea
+> ted dd 2019-11-28.dta"
+file D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Input_class_created
+>  dd 2019-11-28.dta saved
+
+. clear
+
+. tab bp
+no variables defined
+r(111);
+
+. use "D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\GP data.dta"
+
+. tab typhoid
+
+has typhoid |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         No |        172       91.49       91.49
+        Yes |         16        8.51      100.00
+------------+-----------------------------------
+      Total |        188      100.00
+
+. sum bp
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          bp |        169    101.2426    10.39261         80        133
+
+. proportion typhoid
+
+Proportion estimation             Number of obs   =        188
+
+--------------------------------------------------------------
+             |                                   Logit
+             | Proportion   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+     typhoid |
+         No  |   .9148936   .0203511      .8652147    .9473757
+        Yes  |   .0851064   .0203511      .0526243    .1347853
+--------------------------------------------------------------
+
+. mean bp
+
+Mean estimation                   Number of obs   =        169
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   101.2426   .7994313      99.66438    102.8208
+--------------------------------------------------------------
+
+. des gender
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------------------------
+gender          byte    %8.0g      sexx       Gender of Patient
+
+. tab gender
+
+  Gender of |
+    Patient |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       Male |         74       39.36       39.36
+     Female |        114       60.64      100.00
+------------+-----------------------------------
+      Total |        188      100.00
+
+. tab gender, nolabel
+
+  Gender of |
+    Patient |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |         74       39.36       39.36
+          2 |        114       60.64      100.00
+------------+-----------------------------------
+      Total |        188      100.00
+
+. mean bp if gender == 1
+
+Mean estimation                   Number of obs   =         65
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   99.87692   1.349235      97.18152    102.5723
+--------------------------------------------------------------
+
+. mean bp if gender == 2
+
+Mean estimation                   Number of obs   =        104
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   102.0962   .9841461      100.1443     104.048
+--------------------------------------------------------------
+
+. mean bp, level(99)
+
+Mean estimation                   Number of obs   =        169
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [99% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   101.2426   .7994313      99.15976    103.3254
+--------------------------------------------------------------
+
+. mean bp if gender == 1, level(99)
+
+Mean estimation                   Number of obs   =         65
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [99% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   99.87692   1.349235       96.2949    103.4589
+--------------------------------------------------------------
+
+. mean bp if gender == 2, level(99)
+
+Mean estimation                   Number of obs   =        104
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [99% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   102.0962   .9841461      99.51335     104.679
+--------------------------------------------------------------
+
+. mean age if gender ==1
+
+Mean estimation                   Number of obs   =         74
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+         age |   28.51351   1.112223      26.29686    30.73017
+--------------------------------------------------------------
+
+. mean age if gender ==2
+
+Mean estimation                   Number of obs   =        114
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+         age |   33.66667   1.081572      31.52388    35.80946
+--------------------------------------------------------------
+
+. cls
+
+. tab race
+
+ race group |
+ of patient |      Freq.     Percent        Cum.
+------------+-----------------------------------
+     Blacks |        145       77.13       77.13
+     Whites |         18        9.57       86.70
+     Asians |         10        5.32       92.02
+  Coloureds |         15        7.98      100.00
+------------+-----------------------------------
+      Total |        188      100.00
+
+. 
+. tab education
+
+          education |      Freq.     Percent        Cum.
+--------------------+-----------------------------------
+    Primary or less |         39       20.63       20.63
+     Some secondary |         76       40.21       60.85
+Completed secondary |         60       31.75       92.59
+           Tertiary |         14        7.41      100.00
+--------------------+-----------------------------------
+              Total |        189      100.00
+
+. tab race education
+
+race group |                  education
+of patient | Primary o  Some seco  Completed   Tertiary |     Total
+-----------+--------------------------------------------+----------
+    Blacks |        34         52         46         13 |       145 
+    Whites |         0         18          0          0 |        18 
+    Asians |         0          1          9          0 |        10 
+ Coloureds |         4          5          5          1 |        15 
+-----------+--------------------------------------------+----------
+     Total |        38         76         60         14 |       188 
+
+. tab race education, col
+
++-------------------+
+| Key               |
+|-------------------|
+|     frequency     |
+| column percentage |
++-------------------+
+
+race group |                  education
+of patient | Primary o  Some seco  Completed   Tertiary |     Total
+-----------+--------------------------------------------+----------
+    Blacks |        34         52         46         13 |       145 
+           |     89.47      68.42      76.67      92.86 |     77.13 
+-----------+--------------------------------------------+----------
+    Whites |         0         18          0          0 |        18 
+           |      0.00      23.68       0.00       0.00 |      9.57 
+-----------+--------------------------------------------+----------
+    Asians |         0          1          9          0 |        10 
+           |      0.00       1.32      15.00       0.00 |      5.32 
+-----------+--------------------------------------------+----------
+ Coloureds |         4          5          5          1 |        15 
+           |     10.53       6.58       8.33       7.14 |      7.98 
+-----------+--------------------------------------------+----------
+     Total |        38         76         60         14 |       188 
+           |    100.00     100.00     100.00     100.00 |    100.00 
+
+. tab race education, chi2
+
+race group |                  education
+of patient | Primary o  Some seco  Completed   Tertiary |     Total
+-----------+--------------------------------------------+----------
+    Blacks |        34         52         46         13 |       145 
+    Whites |         0         18          0          0 |        18 
+    Asians |         0          1          9          0 |        10 
+ Coloureds |         4          5          5          1 |        15 
+-----------+--------------------------------------------+----------
+     Total |        38         76         60         14 |       188 
+
+          Pearson chi2(9) =  44.6198   Pr = 0.000
+
+. tab gender race, chi2
+
+ Gender of |            race group of patient
+   Patient |    Blacks     Whites     Asians  Coloureds |     Total
+-----------+--------------------------------------------+----------
+      Male |        56          7          7          4 |        74 
+    Female |        89         11          3         11 |       114 
+-----------+--------------------------------------------+----------
+     Total |       145         18         10         15 |       188 
+
+          Pearson chi2(3) =   4.9807   Pr = 0.173
+
+. tab gender education, chi2
+
+ Gender of |                  education
+   Patient | Primary o  Some seco  Completed   Tertiary |     Total
+-----------+--------------------------------------------+----------
+      Male |        14         26         31          3 |        74 
+    Female |        24         50         29         11 |       114 
+-----------+--------------------------------------------+----------
+     Total |        38         76         60         14 |       188 
+
+          Pearson chi2(3) =   6.6385   Pr = 0.084
+
+. tab race typho, chi2
+
+race group |      has typhoid
+of patient |        No        Yes |     Total
+-----------+----------------------+----------
+    Blacks |       132         13 |       145 
+    Whites |        17          1 |        18 
+    Asians |         9          1 |        10 
+ Coloureds |        14          1 |        15 
+-----------+----------------------+----------
+     Total |       172         16 |       188 
+
+          Pearson chi2(3) =   0.3344   Pr = 0.953
+
+. tab race malaria, chi2
+
+race group |             malaria
+of patient |        No        Yes         98 |     Total
+-----------+---------------------------------+----------
+    Blacks |       131         11          3 |       145 
+    Whites |        14          4          0 |        18 
+    Asians |         7          3          0 |        10 
+ Coloureds |        13          2          0 |        15 
+-----------+---------------------------------+----------
+     Total |       165         20          3 |       188 
+
+          Pearson chi2(6) =   8.7322   Pr = 0.189
+
+. tab gender malaria, chi2
+
+ Gender of |             malaria
+   Patient |        No        Yes         98 |     Total
+-----------+---------------------------------+----------
+      Male |        60         11          3 |        74 
+    Female |       105          9          0 |       114 
+-----------+---------------------------------+----------
+     Total |       165         20          3 |       188 
+
+          Pearson chi2(2) =   7.2922   Pr = 0.026
+
+. tab gender malaria, chi2
+
+ Gender of |             malaria
+   Patient |        No        Yes         98 |     Total
+-----------+---------------------------------+----------
+      Male |        60         11          3 |        74 
+    Female |       105          9          0 |       114 
+-----------+---------------------------------+----------
+     Total |       165         20          3 |       188 
+
+          Pearson chi2(2) =   7.2922   Pr = 0.026
+
+. cls
+
+. mean bp if gender == 1
+
+Mean estimation                   Number of obs   =         65
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   99.87692   1.349235      97.18152    102.5723
+--------------------------------------------------------------
+
+. mean bp if gender == 2
+
+Mean estimation                   Number of obs   =        104
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   102.0962   .9841461      100.1443     104.048
+--------------------------------------------------------------
+
+. sum bp, det
+
+                       blood pressure
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           80             80
+ 5%           84             80
+10%           88             80       Obs                 169
+25%           94             80       Sum of Wgt.         169
+
+50%          103                      Mean           101.2426
+                        Largest       Std. Dev.      10.39261
+75%          108            121
+90%          114            122       Variance       108.0063
+95%          117            130       Skewness       .0887927
+99%          130            133       Kurtosis       2.662159
+
+. sktest bp
+
+                    Skewness/Kurtosis tests for Normality
+                                                          ------ joint ------
+    Variable |        Obs  Pr(Skewness)  Pr(Kurtosis) adj chi2(2)   Prob>chi2
+-------------+---------------------------------------------------------------
+          bp |        169     0.6246        0.3922        0.98         0.6115
+
+. tab gender
+
+  Gender of |
+    Patient |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       Male |         74       39.36       39.36
+     Female |        114       60.64      100.00
+------------+-----------------------------------
+      Total |        188      100.00
+
+. tab gender, nolabel
+
+  Gender of |
+    Patient |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |         74       39.36       39.36
+          2 |        114       60.64      100.00
+------------+-----------------------------------
+      Total |        188      100.00
+
+. ttest bp, by (gender)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+    Male |      65    99.87692    1.349235    10.87788    97.18152    102.5723
+  Female |     104    102.0962    .9841461    10.03636    100.1443     104.048
+---------+--------------------------------------------------------------------
+combined |     169    101.2426    .7994313    10.39261    99.66438    102.8208
+---------+--------------------------------------------------------------------
+    diff |           -2.219231    1.639157                -5.45537    1.016909
+------------------------------------------------------------------------------
+    diff = mean(Male) - mean(Female)                              t =  -1.3539
+Ho: diff = 0                                     degrees of freedom =      167
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0888         Pr(|T| > |t|) = 0.1776          Pr(T > t) = 0.9112
+
+. ttest weight height, by(gender)
+too many variables specified
+r(103);
+
+. ttest weight, by(gender)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+    Male |      74     78.7027    1.961659    16.87482    74.79312    82.61228
+  Female |     114    76.63158     1.65271    17.64611    73.35726    79.90589
+---------+--------------------------------------------------------------------
+combined |     188    77.44681    1.263976    17.33077    74.95332    79.94029
+---------+--------------------------------------------------------------------
+    diff |            2.071124    2.589687               -3.037811    7.180059
+------------------------------------------------------------------------------
+    diff = mean(Male) - mean(Female)                              t =   0.7998
+Ho: diff = 0                                     degrees of freedom =      186
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.7876         Pr(|T| > |t|) = 0.4249          Pr(T > t) = 0.2124
+
+. ttest weight height, by(gender)
+too many variables specified
+r(103);
+
+. ttest weight, by(gender)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+    Male |      74     78.7027    1.961659    16.87482    74.79312    82.61228
+  Female |     114    76.63158     1.65271    17.64611    73.35726    79.90589
+---------+--------------------------------------------------------------------
+combined |     188    77.44681    1.263976    17.33077    74.95332    79.94029
+---------+--------------------------------------------------------------------
+    diff |            2.071124    2.589687               -3.037811    7.180059
+------------------------------------------------------------------------------
+    diff = mean(Male) - mean(Female)                              t =   0.7998
+Ho: diff = 0                                     degrees of freedom =      186
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.7876         Pr(|T| > |t|) = 0.4249          Pr(T > t) = 0.2124
+
+. ttest height, by(gender)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+    Male |      74    1.540405    .0367443    .3160867    1.467174    1.613637
+  Female |     114    1.560439     .026378    .2816399    1.508179    1.612698
+---------+--------------------------------------------------------------------
+combined |     188    1.552553    .0215158      .29501    1.510108    1.594998
+---------+--------------------------------------------------------------------
+    diff |           -.0200332    .0441338               -.1071003     .067034
+------------------------------------------------------------------------------
+    diff = mean(Male) - mean(Female)                              t =  -0.4539
+Ho: diff = 0                                     degrees of freedom =      186
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.3252         Pr(|T| > |t|) = 0.6504          Pr(T > t) = 0.6748
+
+. ttest bp, by(race)
+more than 2 groups found, only 2 allowed
+r(420);
+
+. ttest typhone, by(age)
+variable typhone not found
+r(111);
+
+. sktest age weight bp height
+
+                    Skewness/Kurtosis tests for Normality
+                                                          ------ joint ------
+    Variable |        Obs  Pr(Skewness)  Pr(Kurtosis) adj chi2(2)   Prob>chi2
+-------------+---------------------------------------------------------------
+         age |        188     0.0023        0.0002       19.12         0.0001
+      weight |        189     0.2493        0.6145        1.60         0.4495
+          bp |        169     0.6246        0.3922        0.98         0.6115
+      height |        189     0.0245        0.7841        5.15         0.0763
+
+. ttest age, by(typhon)
+variable typhon not found
+(error in option by())
+r(111);
+
+. ttest age, by(typhoid)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+      No |     172    31.80814    .8614922    11.29836    30.10761    33.50867
+     Yes |      16     29.8125    2.098052    8.392209    25.34061    34.28439
+---------+--------------------------------------------------------------------
+combined |     188     31.6383    .8078472    11.07664    30.04463    33.23196
+---------+--------------------------------------------------------------------
+    diff |             1.99564    2.899177               -3.723857    7.715136
+------------------------------------------------------------------------------
+    diff = mean(No) - mean(Yes)                                   t =   0.6883
+Ho: diff = 0                                     degrees of freedom =      186
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.7540         Pr(|T| > |t|) = 0.4921          Pr(T > t) = 0.2460
+
+. ttest  weight, by(typhoid)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+      No |     172    76.82558    1.329641    17.43807    74.20096     79.4502
+     Yes |      16      84.125    3.757077    15.02831    76.11698    92.13302
+---------+--------------------------------------------------------------------
+combined |     188    77.44681    1.263976    17.33077    74.95332    79.94029
+---------+--------------------------------------------------------------------
+    diff |           -7.299419    4.510246               -16.19723    1.598396
+------------------------------------------------------------------------------
+    diff = mean(No) - mean(Yes)                                   t =  -1.6184
+Ho: diff = 0                                     degrees of freedom =      186
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0536         Pr(|T| > |t|) = 0.1073          Pr(T > t) = 0.9464
+
+. ttest  weight, by(typhoid)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+      No |     172    76.82558    1.329641    17.43807    74.20096     79.4502
+     Yes |      16      84.125    3.757077    15.02831    76.11698    92.13302
+---------+--------------------------------------------------------------------
+combined |     188    77.44681    1.263976    17.33077    74.95332    79.94029
+---------+--------------------------------------------------------------------
+    diff |           -7.299419    4.510246               -16.19723    1.598396
+------------------------------------------------------------------------------
+    diff = mean(No) - mean(Yes)                                   t =  -1.6184
+Ho: diff = 0                                     degrees of freedom =      186
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0536         Pr(|T| > |t|) = 0.1073          Pr(T > t) = 0.9464
+
+. ttest  bp, by(typhoid)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+      No |     155    101.1935    .8356378    10.40361    99.54276    102.8443
+     Yes |      14    101.7857     2.84427    10.64229    95.64104    107.9304
+---------+--------------------------------------------------------------------
+combined |     169    101.2426    .7994313    10.39261    99.66438    102.8208
+---------+--------------------------------------------------------------------
+    diff |           -.5921659    2.908576               -6.334484    5.150152
+------------------------------------------------------------------------------
+    diff = mean(No) - mean(Yes)                                   t =  -0.2036
+Ho: diff = 0                                     degrees of freedom =      167
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.4195         Pr(|T| > |t|) = 0.8389          Pr(T > t) = 0.5805
+
+. ttest  height, by(typhoid)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+      No |     172    1.556279    .0227225    .2980033    1.511426    1.601132
+     Yes |      16      1.5125    .0664862    .2659448    1.370788    1.654212
+---------+--------------------------------------------------------------------
+combined |     188    1.552553    .0215158      .29501    1.510108    1.594998
+---------+--------------------------------------------------------------------
+    diff |            .0437791    .0772469               -.1086136    .1961718
+------------------------------------------------------------------------------
+    diff = mean(No) - mean(Yes)                                   t =   0.5667
+Ho: diff = 0                                     degrees of freedom =      186
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.7142         Pr(|T| > |t|) = 0.5716          Pr(T > t) = 0.2858
+
+. clcear
+command clcear is unrecognized
+r(199);
+
+. clear
+
+. use "D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\Auto.dta"
+(1978 Automobile Data)
+
+. cls
+
+. clear
+
+. sysuse auto.dta
+(1978 Automobile Data)
+
+. tab
+varlist required
+r(100);
+
+. tab  make
+
+    Make and Model |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+       AMC Concord |          1        1.35        1.35
+         AMC Pacer |          1        1.35        2.70
+        AMC Spirit |          1        1.35        4.05
+         Audi 5000 |          1        1.35        5.41
+          Audi Fox |          1        1.35        6.76
+          BMW 320i |          1        1.35        8.11
+     Buick Century |          1        1.35        9.46
+     Buick Electra |          1        1.35       10.81
+     Buick LeSabre |          1        1.35       12.16
+        Buick Opel |          1        1.35       13.51
+       Buick Regal |          1        1.35       14.86
+     Buick Riviera |          1        1.35       16.22
+     Buick Skylark |          1        1.35       17.57
+      Cad. Deville |          1        1.35       18.92
+     Cad. Eldorado |          1        1.35       20.27
+      Cad. Seville |          1        1.35       21.62
+    Chev. Chevette |          1        1.35       22.97
+      Chev. Impala |          1        1.35       24.32
+      Chev. Malibu |          1        1.35       25.68
+ Chev. Monte Carlo |          1        1.35       27.03
+       Chev. Monza |          1        1.35       28.38
+        Chev. Nova |          1        1.35       29.73
+        Datsun 200 |          1        1.35       31.08
+        Datsun 210 |          1        1.35       32.43
+        Datsun 510 |          1        1.35       33.78
+        Datsun 810 |          1        1.35       35.14
+        Dodge Colt |          1        1.35       36.49
+    Dodge Diplomat |          1        1.35       37.84
+      Dodge Magnum |          1        1.35       39.19
+   Dodge St. Regis |          1        1.35       40.54
+       Fiat Strada |          1        1.35       41.89
+       Ford Fiesta |          1        1.35       43.24
+      Ford Mustang |          1        1.35       44.59
+      Honda Accord |          1        1.35       45.95
+       Honda Civic |          1        1.35       47.30
+ Linc. Continental |          1        1.35       48.65
+      Linc. Mark V |          1        1.35       50.00
+  Linc. Versailles |          1        1.35       51.35
+         Mazda GLC |          1        1.35       52.70
+      Merc. Bobcat |          1        1.35       54.05
+      Merc. Cougar |          1        1.35       55.41
+     Merc. Marquis |          1        1.35       56.76
+     Merc. Monarch |          1        1.35       58.11
+        Merc. XR-7 |          1        1.35       59.46
+      Merc. Zephyr |          1        1.35       60.81
+           Olds 98 |          1        1.35       62.16
+    Olds Cutl Supr |          1        1.35       63.51
+      Olds Cutlass |          1        1.35       64.86
+     Olds Delta 88 |          1        1.35       66.22
+        Olds Omega |          1        1.35       67.57
+     Olds Starfire |          1        1.35       68.92
+     Olds Toronado |          1        1.35       70.27
+       Peugeot 604 |          1        1.35       71.62
+       Plym. Arrow |          1        1.35       72.97
+       Plym. Champ |          1        1.35       74.32
+     Plym. Horizon |          1        1.35       75.68
+     Plym. Sapporo |          1        1.35       77.03
+      Plym. Volare |          1        1.35       78.38
+    Pont. Catalina |          1        1.35       79.73
+    Pont. Firebird |          1        1.35       81.08
+  Pont. Grand Prix |          1        1.35       82.43
+     Pont. Le Mans |          1        1.35       83.78
+     Pont. Phoenix |          1        1.35       85.14
+     Pont. Sunbird |          1        1.35       86.49
+    Renault Le Car |          1        1.35       87.84
+            Subaru |          1        1.35       89.19
+     Toyota Celica |          1        1.35       90.54
+    Toyota Corolla |          1        1.35       91.89
+     Toyota Corona |          1        1.35       93.24
+         VW Dasher |          1        1.35       94.59
+         VW Diesel |          1        1.35       95.95
+         VW Rabbit |          1        1.35       97.30
+       VW Scirocco |          1        1.35       98.65
+         Volvo 260 |          1        1.35      100.00
+-------------------+-----------------------------------
+             Total |         74      100.00
+
+. sktest proce
+variable proce not found
+r(111);
+
+. sktest  price
+
+                    Skewness/Kurtosis tests for Normality
+                                                          ------ joint ------
+    Variable |        Obs  Pr(Skewness)  Pr(Kurtosis) adj chi2(2)   Prob>chi2
+-------------+---------------------------------------------------------------
+       price |         74     0.0000        0.0127       21.77         0.0000
+
+. sktest  mpg
+
+                    Skewness/Kurtosis tests for Normality
+                                                          ------ joint ------
+    Variable |        Obs  Pr(Skewness)  Pr(Kurtosis) adj chi2(2)   Prob>chi2
+-------------+---------------------------------------------------------------
+         mpg |         74     0.0015        0.0804       10.95         0.0042
+
+. sktest   rep78
+
+                    Skewness/Kurtosis tests for Normality
+                                                          ------ joint ------
+    Variable |        Obs  Pr(Skewness)  Pr(Kurtosis) adj chi2(2)   Prob>chi2
+-------------+---------------------------------------------------------------
+       rep78 |         69     0.8334        0.7472        0.15         0.9286
+
+. test  rep78, by(foreign)
+option by() not allowed
+r(198);
+
+. ttest  rep78, by(foreign)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+Domestic |      48    3.020833    .1209067     .837666      2.7776    3.264066
+ Foreign |      21    4.285714    .1564922    .7171372    3.959277    4.612151
+---------+--------------------------------------------------------------------
+combined |      69    3.405797    .1191738    .9899323    3.167989    3.643605
+---------+--------------------------------------------------------------------
+    diff |           -1.264881    .2102445               -1.684531   -.8452312
+------------------------------------------------------------------------------
+    diff = mean(Domestic) - mean(Foreign)                         t =  -6.0162
+Ho: diff = 0                                     degrees of freedom =       67
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. sum bp
+variable bp not found
+r(111);
+
+. tab bp
+variable bp not found
+r(111);
+
+. cls
+
+. clear
+
+. use "D:\One Drive\OneDrive - University of South Africa\Desktop\Datasets Stata\GP data.dta"
+
+. oneway by race, tab
+variable by not found
+r(111);
+
+. oneway bp race, tab
+
+ race group |      Summary of blood pressure
+ of patient |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+     Blacks |   101.09023   10.705039         133
+     Whites |   103.17647   9.5540259          17
+     Asians |          99   9.7296797           7
+  Coloureds |       101.5   8.9797753          12
+------------+------------------------------------
+      Total |    101.2426   10.392606         169
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      102.665373      3    34.221791      0.31     0.8160
+ Within groups      18042.3879    165   109.347805
+------------------------------------------------------------------------
+    Total           18145.0533    168   108.006269
+
+Bartlett's test for equal variances:  chi2(3) =   0.8834  Prob>chi2 = 0.829
+
+. mean bp if race==1
+
+Mean estimation                   Number of obs   =        133
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   101.0902   .9282446      99.25407    102.9264
+--------------------------------------------------------------
+
+. mean bp if race==2
+
+Mean estimation                   Number of obs   =         17
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   103.1765   2.317192      98.26424    108.0887
+--------------------------------------------------------------
+
+. mean bp if race==3
+
+Mean estimation                   Number of obs   =          7
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |         99   3.677473      90.00155    107.9985
+--------------------------------------------------------------
+
+. mean bp if race==4
+
+Mean estimation                   Number of obs   =         12
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |      101.5   2.592238      95.79452    107.2055
+--------------------------------------------------------------
+
+. oneway bp education, tab
+
+            |      Summary of blood pressure
+  education |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+  Primary o |   99.484848   8.0160823          33
+  Some seco |   100.01429   9.5378618          70
+  Completed |   100.15385   10.581865          52
+   Tertiary |   115.57143   8.5818618          14
+------------+------------------------------------
+      Total |    101.2426   10.392606         169
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      3143.62731      3   1047.87577     11.53     0.0000
+ Within groups      15001.4259    165    90.917733
+------------------------------------------------------------------------
+    Total           18145.0533    168   108.006269
+
+Bartlett's test for equal variances:  chi2(3) =   3.1319  Prob>chi2 = 0.372
+
+. tab education
+
+          education |      Freq.     Percent        Cum.
+--------------------+-----------------------------------
+    Primary or less |         39       20.63       20.63
+     Some secondary |         76       40.21       60.85
+Completed secondary |         60       31.75       92.59
+           Tertiary |         14        7.41      100.00
+--------------------+-----------------------------------
+              Total |        189      100.00
+
+. tab education, des
+option des not allowed
+r(198);
+
+. mean bp if education==1
+
+Mean estimation                   Number of obs   =         33
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   99.48485   1.395421      96.64247    102.3272
+--------------------------------------------------------------
+
+. mean bp if education==2
+
+Mean estimation                   Number of obs   =         70
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   100.0143   1.139993      97.74006    102.2885
+--------------------------------------------------------------
+
+. mean bp if education==3
+
+Mean estimation                   Number of obs   =         52
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   100.1538   1.467441      97.20784    103.0999
+--------------------------------------------------------------
+
+. mean bp if education==4
+
+Mean estimation                   Number of obs   =         14
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   115.5714   2.293599      110.6164    120.5264
+--------------------------------------------------------------
+
+. mean bp if race==1
+
+Mean estimation                   Number of obs   =        133
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+          bp |   101.0902   .9282446      99.25407    102.9264
+--------------------------------------------------------------
+
+. oneway bp education, tab
+
+            |      Summary of blood pressure
+  education |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+  Primary o |   99.484848   8.0160823          33
+  Some seco |   100.01429   9.5378618          70
+  Completed |   100.15385   10.581865          52
+   Tertiary |   115.57143   8.5818618          14
+------------+------------------------------------
+      Total |    101.2426   10.392606         169
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      3143.62731      3   1047.87577     11.53     0.0000
+ Within groups      15001.4259    165    90.917733
+------------------------------------------------------------------------
+    Total           18145.0533    168   108.006269
+
+Bartlett's test for equal variances:  chi2(3) =   3.1319  Prob>chi2 = 0.372
+
+. oneway weight race, tab
+
+ race group |          Summary of weight
+ of patient |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+     Blacks |   77.475862   17.298074         145
+     Whites |   79.111111   19.730206          18
+     Asians |        77.4   14.515892          10
+  Coloureds |        75.2   17.805296          15
+------------+------------------------------------
+      Total |   77.446809   17.330766         188
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups       125.72479      3   41.9082634      0.14     0.9375
+ Within groups      56040.7433    184   304.569257
+------------------------------------------------------------------------
+    Total           56166.4681    187   300.355444
+
+Bartlett's test for equal variances:  chi2(3) =   1.1027  Prob>chi2 = 0.776
+
+. oneway weight educatiion, tab
+variable educatiion not found
+r(111);
+
+. oneway weight education, tab
+
+            |          Summary of weight
+  education |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+  Primary o |   83.948718   17.690242          39
+  Some seco |   80.578947    16.94797          76
+  Completed |   72.933333   16.191509          60
+   Tertiary |   64.714286   15.661951          14
+------------+------------------------------------
+      Total |   77.671958   17.559574         189
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      5876.64715      3   1958.88238      6.96     0.0002
+ Within groups      52091.0142    185    281.57305
+------------------------------------------------------------------------
+    Total           57967.6614    188   308.338624
+
+Bartlett's test for equal variances:  chi2(3) =   0.4927  Prob>chi2 = 0.920
+
+. mean weright if race==1
+variable weright not found
+r(111);
+
+. mean weight if race==1
+
+Mean estimation                   Number of obs   =        145
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      weight |   77.47586   1.436527      74.63646    80.31527
+--------------------------------------------------------------
+
+. mean weight if race==2
+
+Mean estimation                   Number of obs   =         18
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      weight |   79.11111   4.650454      69.29951    88.92271
+--------------------------------------------------------------
+
+. mean weight if race==3
+
+Mean estimation                   Number of obs   =         10
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      weight |       77.4   4.590328      67.01596    87.78404
+--------------------------------------------------------------
+
+. mean weight if race==4
+
+Mean estimation                   Number of obs   =         15
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      weight |       75.2   4.597308      65.33976    85.06024
+--------------------------------------------------------------
+
+. oneway height race, tab
+
+ race group |     Summary of height in metres
+ of patient |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+     Blacks |   1.5688276   .31125752         145
+     Whites |   1.5072222   .20207177          18
+     Asians |       1.625   .25906885          10
+  Coloureds |   1.4013333   .19906448          15
+------------+------------------------------------
+      Total |   1.5525532   .29500995         188
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      .470889353      3   .156963118      1.83     0.1437
+ Within groups      15.8038836    184   .085890672
+------------------------------------------------------------------------
+    Total           16.2747729    187   .087030871
+
+Bartlett's test for equal variances:  chi2(3) =   8.1321  Prob>chi2 = 0.043
+
+. oneway height education, tab
+
+            |     Summary of height in metres
+  education |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+  Primary o |   1.3766667   .16459412          39
+  Some seco |   1.5034211   .22689529          76
+  Completed |      1.6695   .32917164          60
+   Tertiary |   1.7857143   .40357466          14
+------------+------------------------------------
+      Total |   1.5508995   .29510137         189
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      2.97114174      3   .990380581     13.67     0.0000
+ Within groups      13.4008038    185   .072436777
+------------------------------------------------------------------------
+    Total           16.3719455    188   .087084817
+
+Bartlett's test for equal variances:  chi2(3) =  28.2904  Prob>chi2 = 0.000
+
+. mean height if education==1
+
+Mean estimation                   Number of obs   =         39
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      height |   1.376667   .0263562      1.323311    1.430022
+--------------------------------------------------------------
+
+. mean height if education==2
+
+Mean estimation                   Number of obs   =         76
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      height |   1.503421   .0260267      1.451573    1.555269
+--------------------------------------------------------------
+
+. mean height if education==3
+
+Mean estimation                   Number of obs   =         60
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      height |     1.6695   .0424959      1.584466    1.754534
+--------------------------------------------------------------
+
+. mean height if education==4
+
+Mean estimation                   Number of obs   =         14
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      height |   1.785714   .1078599      1.552697    2.018731
+--------------------------------------------------------------
+
+. oneway weight education, tab
+
+            |          Summary of weight
+  education |        Mean   Std. Dev.       Freq.
+------------+------------------------------------
+  Primary o |   83.948718   17.690242          39
+  Some seco |   80.578947    16.94797          76
+  Completed |   72.933333   16.191509          60
+   Tertiary |   64.714286   15.661951          14
+------------+------------------------------------
+      Total |   77.671958   17.559574         189
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      5876.64715      3   1958.88238      6.96     0.0002
+ Within groups      52091.0142    185    281.57305
+------------------------------------------------------------------------
+    Total           57967.6614    188   308.338624
+
+Bartlett's test for equal variances:  chi2(3) =   0.4927  Prob>chi2 = 0.920
+
+. mean weight if education ==1
+
+Mean estimation                   Number of obs   =         39
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      weight |   83.94872   2.832706       78.2142    89.68323
+--------------------------------------------------------------
+
+. exit, clear
